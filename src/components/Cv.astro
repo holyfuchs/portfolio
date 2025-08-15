@@ -1,0 +1,247 @@
+---
+import { Icon } from "astro-icon/components";
+import { getCollection } from "astro:content";
+
+const [staticData] = await getCollection("staticData");
+const { telephone, email, location } = staticData.data;
+const github = staticData.data.github.replace(/^https?:\/\//, "");
+const linkedin = staticData.data.linkedin.replace(/^https?:\/\//, "");
+const website = staticData.data.website.replace(/^https?:\/\//, "");
+
+
+const intro = "I’m a software developer with a strong technical background who has gradually moved into product-focused roles. I enjoy tackling complex challenges and delivering products that have a meaningful impact. Outside of work I experiment with new technologies and enjoy participating in international hackathons, where I build prototypes under tight deadlines, and collaborate with diverse teams."
+const languageSkills = [
+    {
+        title: "C",
+        level: "95%",
+    },
+    {
+        title: "Go",
+        level: "90%",
+    },
+    {
+        title: "Python",
+        level: "90%",
+    },
+    {
+        title: "C++17",
+        level: "80%",
+    },
+    {
+        title: "Solidity",
+        level: "80%",
+    },
+];
+const frameworkSkills = [
+{
+        title: "Git",
+        level: "90%",
+    },
+    {
+        title: "Pandas",
+        level: "90%",
+    },
+    {
+        title: "Docker",
+        level: "80%",
+    },
+    {
+        title: "Dagster",
+        level: "80%",
+    },
+    {
+        title: "Astro",
+        level: "70%",
+    },
+    
+    
+];
+
+const zippedSkills = [];
+const maxLength = Math.max(languageSkills.length, frameworkSkills.length);
+for (let i = 0; i < maxLength; i++) {
+    if (languageSkills[i]) zippedSkills.push(languageSkills[i]);
+    if (frameworkSkills[i]) zippedSkills.push(frameworkSkills[i]);
+}
+
+const jobExperiences = [
+    {
+        title: "Product Development Lead",
+        company: "Arkadia Heilbronn gGmbH",
+        date: "Apr 2025 - Present",
+        description:
+            "Managed and worked alongside a team to design, build, and launch LEVEL3, a program for advanced developers. Contributed to architecture and implementation while defining requirements and ensuring on-time delivery.",
+    },
+    {
+        title: "Product Lead",
+        company: "42 Heilbronn gGmbH",
+        date: "Jan 2024 - Apr 2025",
+        description:
+            "Defined product strategy and roadmap, making data-driven decisions on feature priorities. Led initiatives that improved student retention, enhanced academic performance, and optimized the overall learning experience.",
+    },
+    {
+        title: "Data Engineer / Data Analyst",
+        company: "42 Heilbronn gGmbH",
+        date: "Nov 2022 - Jan 2024",
+        description:
+            "Designed and built a data warehouse and real-time ETL pipelines with Dagster, delivering clean, actionable insights to executives. Developed machine learning models for student selection and an automated cheating detection system.",
+    },
+];
+const educations = [
+    {
+        title: "Software Engineering",
+        company: "42 Heilbronn gGmbH",
+        date: "Mar 2022 - Nov 2022",
+        description:
+            "Completed 42 School's intensive, project-based software engineering program focused on software development and system programming.",
+    },
+    {
+        title: "Mathemtics",
+        company: "Westfälische Wilhelms-Universität Münster",
+        date: "Okt 2017 - Mar 2022",
+        description: "",
+    },
+];
+const awards = [
+    {
+        title: "4x 1st Place",
+        company: "ETHGlobal",
+        date: "2023 - Present",
+        description:
+            "Participated in 18 international hackathons, winning over $60,000 in combined prize money. Projects available on GitHub.",
+    },
+];
+const sections = [
+    {
+        name: "JOB EXPERIENCES",
+        icon: "mdi:briefcase",
+        list: jobExperiences,
+    },
+    {
+        name: "EDUCATION",
+        icon: "mdi:school",
+        list: educations,
+    },
+    {
+        name: "AWARDS",
+        icon: "mdi:trophy",
+        list: awards,
+    },
+];
+---
+
+<main class="relative shadow-lg mx-auto w-[210mm] h-[297mm] print-color-exact">
+    <div class="p-8">
+        <div
+            class="top-0 bottom-0 left-0 z-[-1] absolute bg-white w-full pointer-events-none"
+        >
+        </div>
+        <div
+            class="top-0 bottom-0 left-0 z-[-1] absolute w-[74mm] pointer-events-none"
+            style="background: linear-gradient(to right, #d6d3d1 99%, #fff 100%);"
+        >
+        </div>
+        <!-- Header Section -->
+        <div class="flex pb-4">
+            <!-- Left Side: Name and Contact -->
+            <div class="min-w-[65mm]">
+                <h1 class="font-bold text-4xl">Patrick Fuchs</h1>
+                <p class="mt-2 text-lg">
+                    Software Engineer &<br />Product Lead
+                </p>
+
+                <!-- Contact Info -->
+                <div class="flex flex-col gap-1 mt-4 text-sm">
+                    <p class="flex items-center">
+                        <Icon name="mdi:phone" class="mr-1 w-5 h-5" />
+                        <span>{telephone}</span>
+                    </p>
+                    <p class="flex items-center">
+                        <Icon name="mdi:email" class="mr-1 w-5 h-5" />
+                        <span>{email}</span>
+                    </p>
+                    <p class="flex items-center">
+                        <Icon name="mdi:web" class="mr-1 w-5 h-5" />
+                        <span>{website}</span>
+                    </p>
+                    <p class="flex items-center">
+                        <Icon name="mdi:map-marker" class="mr-1 w-5 h-5" />
+                        <span>{location}</span>
+                    </p>
+                    <p class="flex items-center">
+                        <Icon name="mdi:github" class="mr-1 w-5 h-5" />
+                        <span>{github}</span>
+                    </p>
+                    <p class="flex items-center">
+                        <Icon name="mdi:linkedin" class="mr-1 w-5 h-5" />
+                        <span>{linkedin}</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right Side: Profile -->
+            <div class="pt-0 pl-4 w-full">
+                <p class="text-gray-700">
+                    {intro}
+                </p>
+                <div class="gap-x-8 gap-y-0 grid grid-cols-2 mt-4">
+                    {
+                        zippedSkills.map((skill) => (
+                            <div class="flex items-center gap-0 skill-item">
+                                <span class="min-w-[80px] text-sm">
+                                    {skill.title}
+                                </span>
+                                <div class="flex-1">
+                                    <div class="bg-gray-200 rounded h-1.5">
+                                        <div
+                                            class="bg-black rounded h-full"
+                                            style={`width: ${skill.level}`}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+
+        {
+            sections.map((section) => (
+                <div>
+                    {/* Section Header */}
+                    <div class="flex items-stretch mt-0 mb-2">
+                        <div class="flex items-center min-w-[65mm] font-bold text-lg">
+                            <h2 class="flex items-center bg-white rounded-l-full w-full">
+                                <Icon
+                                    name={section.icon}
+                                    class="mr-1 ml-2 w-8 h-8 text-black"
+                                />
+                                <span>{section.name}</span>
+                            </h2>
+                        </div>
+                        <div class="flex items-center bg-white pl-2 w-full">
+                            <div class="flex-grow bg-gray-300 h-[1px]" />
+                        </div>
+                    </div>
+
+                    {/* Section Items */}
+                    {section.list.map((item) => (
+                        <div class="flex mb-2">
+                            <div class="pr-4 min-w-[65mm] text-right">
+                                <h3 class="font-bold">{item.title}</h3>
+                                <p class="text-gray-600 text-sm">{item.date}</p>
+                            </div>
+                            <div class="pl-4 w-full">
+                                <h3 class="mr-8 font-bold">{item.company}</h3>
+                                <p class="text-gray-700">
+                                    <span set:html={item.description} />
+                                </p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            ))
+        }
+    </div>
+</main>

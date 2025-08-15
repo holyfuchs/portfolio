@@ -1,0 +1,11 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CvComponent from "../components/Cv.astro";
+const pageTitle = "CV | Patrick Fuchs";
+const description = "Professional CV and work experience of Patrick Fuchs";
+---
+<Layout pageTitle={pageTitle} description={description}>
+    <div class="flex justify-center items-center mt-8 print:mt-0">
+        <CvComponent />
+    </div>
+</Layout>

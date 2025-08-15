@@ -1,0 +1,60 @@
+---
+import fox from "../icons/fox.svg";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import { getCollection } from "astro:content";
+
+const [staticData] = await getCollection("staticData");
+const { github, linkedin} = staticData.data;
+
+const routes = [
+  { name: "About", path: "/about" },
+  // { name: "Projects", path: "/projects" },
+  // { name: "Map", path: "/map" },
+  { name: "CV", path: "/cv" },
+];
+---
+
+<header
+  role="banner"
+  aria-label="Main navigation"
+  class="top-0 z-50 sticky bg-white/90 dark:bg-stone-800 backdrop-blur-xs p-4 dark:border-zinc-800 dark:border-b w-full font-medium text-blacktext dark:text-zinc-300 transition-all"
+>
+  <div class="relative flex justify-between items-center mx-auto max-xl:px-6 max-w-7xl">
+    <nav class="flex justify-between items-center gap-8 w-full" role="navigation" aria-label="Main Navigation">
+      <a href="/" class="flex items-center" aria-label="Go to homepage">
+        <Image src={fox} alt="Fox Logo" width={32} height={32} />
+      </a>
+      <div class="flex items-center gap-6">
+        {routes.map((item) => (
+          <a
+            href={item.path}
+            class="px-2 py-2 hover:text-mint-300 transition-all"
+            aria-label={item.name}
+            aria-current={item.path === Astro.url.pathname ? "page" : undefined}
+          >
+            {item.name}
+          </a>
+        ))}
+      </div>
+
+      <div class="max-md:hidden flex items-center gap-5" role="group" aria-label="Social Media Links">
+        <a href={github} aria-label="GitHub Profile">
+          <Icon name="mdi:github" class="h-6" aria-hidden="true" width={24} height={24}/>
+        </a>
+        <a href={linkedin} aria-label="LinkedIn Profile">
+          <Icon name="mdi:linkedin" class="h-6" aria-hidden="true" width={24} height={24}/>
+        </a>
+      </div>
+    </nav>
+
+    <button
+      class="hidden max-md:block"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <Icon name="mdi:menu" class="h-6" aria-hidden="true" />
+    </button>
+  </div>
+</header>

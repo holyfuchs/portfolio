@@ -1,0 +1,29 @@
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+
+:root {
+    --color-primary: #5cd8b1;
+    --color-secondary: #b15cd8;
+    --color-accent: #d8b15c;
+    --color-background: #000000;
+    --color-text: #ffffff;
+    --color-surface: #2a2a2a;
+    --color-primary-filter: #5cd8b1;
+}
+
+@media print {
+/* Hide non-printable elements */
+        header,
+        footer,
+        .blur-circle,
+        .hamburger,
+        .nav-links {
+            display: none !important;
+        }
+
+        .print-color-exact {
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+}
+
