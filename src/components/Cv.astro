@@ -158,11 +158,11 @@ const sections = [
                     </p>
                     <p class="flex items-center">
                         <Icon name="mdi:email" class="mr-1 w-5 h-5" />
-                        <span>{email}</span>
+                        <a href={`mailto:${email}`} class="hover:underline">{email}</a>
                     </p>
                     <p class="flex items-center">
                         <Icon name="mdi:web" class="mr-1 w-5 h-5" />
-                        <span>{website}</span>
+                        <a href={`https://${website}`} class="hover:underline">{website}</a>
                     </p>
                     <p class="flex items-center">
                         <Icon name="mdi:map-marker" class="mr-1 w-5 h-5" />
@@ -170,11 +170,11 @@ const sections = [
                     </p>
                     <p class="flex items-center">
                         <Icon name="mdi:github" class="mr-1 w-5 h-5" />
-                        <span>{github}</span>
+                        <a href={`https://${github}`} class="hover:underline">{github}</a>
                     </p>
                     <p class="flex items-center">
                         <Icon name="mdi:linkedin" class="mr-1 w-5 h-5" />
-                        <span>{linkedin}</span>
+                        <a href={`https://${linkedin}`} class="hover:underline">{linkedin}</a>
                     </p>
                 </div>
             </div>
