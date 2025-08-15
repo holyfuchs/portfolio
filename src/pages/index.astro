@@ -1,9 +1,31 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import TelegramQR from "../content/telegram_qr.svg";
 ---
 
 <Layout
   pageTitle="Patrick Fuchs"
   description="I'm a software engineer and product lead with a passion for building products that help people live better lives."
 >
+  <main class="mx-auto px-4 py-8 container">
+    <div class="mx-auto max-w-2xl text-center">
+      <h1 class="mb-6 font-bold text-white text-4xl">Welcome! 👋</h1>
+      
+      <p class="mb-8 text-white text-xl">
+        I'm Patrick Fuchs, a software engineer and product lead.
+      </p>
+
+      <div class="inline-block bg-[#2AABEE] shadow-lg p-6 rounded-lg">
+        <Image 
+          src={TelegramQR} 
+          alt="My Telegram QR Code" 
+          class="bg-white mx-auto p-2 rounded-lg w-48 h-48"
+          width={1000}
+          height={1000}
+        />
+        <p class="mt-4 text-white text-sm">Telegram @HOLYFUCHS</p>
+      </div>
+    </div>
+  </main>
 </Layout>
