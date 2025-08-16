@@ -46,6 +46,20 @@ export default class World {
       await this.createEarth()
       this.render()
     })
+
+    // Configure controls for better mobile handling
+    this.controls.enableDamping = true;
+    this.controls.dampingFactor = 0.05;
+    this.controls.rotateSpeed = 0.5;
+    this.controls.enableZoom = true;
+    this.controls.enablePan = false; // Disable panning on mobile
+    this.controls.minDistance = 120;
+    this.controls.maxDistance = 300;
+    
+    // Prevent default touch behavior
+    option.dom.addEventListener('touchmove', (e) => {
+      e.preventDefault();
+    }, { passive: false });
   }
 
   async createEarth() {

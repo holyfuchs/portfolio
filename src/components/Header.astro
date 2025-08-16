@@ -18,7 +18,7 @@ const routes = [
 <header
   role="banner"
   aria-label="Main navigation"
-  class="top-0 z-50 sticky bg-white/90 dark:bg-stone-800 backdrop-blur-xs p-4 dark:border-zinc-800 dark:border-b w-full font-medium text-blacktext dark:text-zinc-300 transition-all"
+  class="top-0 z-50 sticky bg-white/90 dark:bg-stone-800 backdrop-blur-xs p-4 dark:border-zinc-800 dark:border-b w-full font-medium text-blacktext dark:text-zinc-300"
 >
   <div class="relative flex justify-between items-center mx-auto max-xl:px-6 max-w-7xl">
     <nav class="flex justify-between items-center gap-8 w-full" role="navigation" aria-label="Main Navigation">
@@ -29,7 +29,7 @@ const routes = [
         {routes.map((item) => (
           <a
             href={item.path}
-            class="px-2 py-2 hover:text-mint-300 transition-all"
+            class="px-2 py-2 hover:text-mint-300 text-xl transition-all"
             aria-label={item.name}
             aria-current={item.path === Astro.url.pathname ? "page" : undefined}
           >
