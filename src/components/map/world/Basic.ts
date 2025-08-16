@@ -31,9 +31,8 @@ export class Basic {
       alpha: true, 
       antialias: true, 
     });
-    this.renderer.setPixelRatio(window.devicePixelRatio); 
-    this.renderer.setSize(window.innerWidth, window.innerHeight); 
-    this.dom.appendChild(this.renderer.domElement); 
+    this.dom.appendChild(this.renderer.domElement);
+    // this.setControls()
   }
 
 
@@ -42,7 +41,7 @@ export class Basic {
     
     this.controls.autoRotateSpeed = 3
     this.controls.enableDamping = true;
-    this.controls.dampingFactor = 0.05;
+    this.controls.dampingFactor = .1;
     this.controls.enableZoom = true;
     this.controls.minDistance = 100;
     this.controls.maxDistance = 300;

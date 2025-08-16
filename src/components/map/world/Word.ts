@@ -36,30 +36,27 @@ export default class World {
 
     this.sizes = new Sizes({ dom: option.dom })
 
-    this.sizes.$on('resize', () => {
-      this.renderer.setSize(Number(this.sizes.viewport.width), Number(this.sizes.viewport.height))
-      this.camera.aspect = Number(this.sizes.viewport.width) / Number(this.sizes.viewport.height)
-      this.camera.updateProjectionMatrix()
-    })
+    this.sizes.$on('resize', this.resize.bind(this))
+
+    this.resize()
 
     this.resources = new Resources(async () => {
       await this.createEarth()
       this.render()
     })
 
-    // Configure controls for better mobile handling
-    this.controls.enableDamping = true;
-    this.controls.dampingFactor = 0.05;
-    this.controls.rotateSpeed = 0.5;
-    this.controls.enableZoom = true;
-    this.controls.enablePan = false; // Disable panning on mobile
-    this.controls.minDistance = 120;
-    this.controls.maxDistance = 300;
+    
     
     // Prevent default touch behavior
     option.dom.addEventListener('touchmove', (e) => {
       e.preventDefault();
     }, { passive: false });
+  }
+
+  resize() {
+    this.renderer.setSize(Number(this.sizes.viewport.width), Number(this.sizes.viewport.height))
+    this.camera.aspect = Number(this.sizes.viewport.width) / Number(this.sizes.viewport.height)
+    this.camera.updateProjectionMatrix()
   }
 
   async createEarth() {
