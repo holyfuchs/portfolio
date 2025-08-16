@@ -2,6 +2,15 @@
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import TelegramQR from "../content/telegram_qr.svg";
+
+import { getCollection } from "astro:content";
+
+const [staticData] = await getCollection("staticData");
+const { telephone, email, location } = staticData.data;
+const github = staticData.data.github.replace(/^https?:\/\//, "");
+const linkedin = staticData.data.linkedin.replace(/^https?:\/\//, "");
+const website = staticData.data.website.replace(/^https?:\/\//, "");
+
 ---
 
 <Layout
@@ -10,21 +19,27 @@ import TelegramQR from "../content/telegram_qr.svg";
 >
   <main class="mx-auto px-4 py-8 container">
     <div class="mx-auto max-w-2xl text-center">
-      <h1 class="mb-6 font-bold text-white text-4xl">Welcome! 👋</h1>
+      <h1 class="mb-6 font-bold text-white text-4xl">Contact</h1>
       
       <p class="mb-8 text-white text-xl">
-        I'm Patrick Fuchs, a software engineer and product lead.
       </p>
 
-      <div class="inline-block bg-[#2AABEE] shadow-lg p-6 rounded-lg">
-        <Image 
+      <div class="mb-8 text-white text-xl">
+        
+        <div class="inline-block bg-[#2AABEE] shadow-lg p-6 rounded-lg">
+          <Image 
           src={TelegramQR} 
           alt="My Telegram QR Code" 
           class="bg-white mx-auto p-2 rounded-lg w-48 h-48"
           width={1000}
           height={1000}
-        />
-        <p class="mt-4 text-white text-sm">Telegram @HOLYFUCHS</p>
+          />
+          <p class="mt-4 text-white text-sm">Telegram @HOLYFUCHS</p>
+          
+        </div>
+        <p class="mt-4">
+          <a href={`mailto:${email}`} class="text-white hover:text-gray-300">{email}</a>
+        </p>
       </div>
     </div>
   </main>
