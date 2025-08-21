@@ -9,7 +9,7 @@ const linkedin = staticData.data.linkedin.replace(/^https?:\/\//, "");
 const website = staticData.data.website.replace(/^https?:\/\//, "");
 
 
-const intro = "I'm a software developer with a strong technical background who has gradually moved into product-focused roles. I enjoy tackling complex challenges and delivering products that have a meaningful impact. Outside of work I experiment with new technologies and enjoy participating in international hackathons, where I build prototypes under tight deadlines, and collaborate with diverse teams."
+const intro = "<br>I'm a software developer with a strong technical background who has gradually moved into product-focused roles.<br>Outside of work, I spend my time programming and exploring new technologies.<br>"
 const languageSkills = [
     {
         title: "C",
@@ -51,7 +51,7 @@ const frameworkSkills = [
     },
     {
         title: "Astro",
-        level: "70%",
+        level: "60%",
     },
     
     
@@ -182,7 +182,7 @@ const sections = [
             <!-- Right Side: Profile -->
             <div class="pt-0 pl-4 w-full">
                 <p class="text-gray-700">
-                    {intro}
+                    <span set:html={intro} />
                 </p>
                 <div class="gap-x-8 gap-y-0 grid grid-cols-2 mt-4">
                     {
