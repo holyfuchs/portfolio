@@ -42,7 +42,6 @@ type options = {
   earth: {
     radius: number,
     rotateSpeed: number,
-    isRotation: boolean
   },
   camera: THREE.Camera,
   punctuation: punctuation,
@@ -77,7 +76,6 @@ export default class earth {
   public circleList: any[];
   public x: number;
   public n: number;
-  public isRotation: boolean;
   public flyLineArcGroup: Group;
   public locationSprites: Group;
   public camera: THREE.Camera;
@@ -103,7 +101,7 @@ export default class earth {
     this.x = 0;
     this.n = 0;
 
-    this.isRotation = this.options.earth.isRotation
+    // this.isRotation = this.options.earth.isRotation
 
     this.timeValue = 1
     this.uniforms = {
@@ -354,7 +352,8 @@ export default class earth {
                 canvas.width / 2, canvas.height / 2, canvas.width / 2
               );
               gradient.addColorStop(0, 'rgba(255,255,255,1)');
-              gradient.addColorStop(0.8, 'rgba(255,255,255,1)');
+              gradient.addColorStop(0.5, 'rgba(255,255,255,1)');
+              gradient.addColorStop(0.8, 'rgba(255,255,255,.2)');
               gradient.addColorStop(1, 'rgba(255,255,255,0)');
               
               // Apply the gradient as a mask
@@ -435,10 +434,6 @@ export default class earth {
       if (fly.rotation.z >= fly.flyEndAngle) fly.rotation.z = 0;
     })
 
-    if (this.isRotation) {
-      this.earthGroup.rotation.y += this.options.earth.rotateSpeed;
-    }
-
     if (this.locationSprites && this.camera) {
         const cameraPosition = new Vector3();
         const cameraDirection = new Vector3();
@@ -480,7 +475,7 @@ export default class earth {
             
             if (sprite === closestSprite) {
                 // Make closest sprite larger with a more dramatic scale
-                sprite.scale.set(baseScale * 2 * aspectRatio, baseScale * 2, 1);
+                sprite.scale.set(baseScale * 3 * aspectRatio, baseScale * 3, 1);
             } else {
                 // Make other sprites smaller than the base scale
                 const targetScale = baseScale * 0.7;
