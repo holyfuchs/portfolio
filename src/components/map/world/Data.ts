@@ -13,6 +13,12 @@ export default {
       E: 4.35171,
     },
     {
+      name: 'buenos_aires',
+      url: '/locations/buenos_aires.jpg',
+      N: -34.58374229424236,
+      E: -58.38955971132568,
+    },
+    {
       name: 'cannes',
       url: '/locations/cannes.jpg',
       N: 43.550179240915675, 
@@ -86,6 +92,10 @@ export default {
           {
             N: 50.85034, // brussels
             E: 4.35171,
+          },
+          {
+            N: -34.58374229424236, // buenos aires
+            E: -58.38955971132568,
           },
           {
             N: 43.550179240915675, // cannes

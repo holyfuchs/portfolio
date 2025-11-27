@@ -329,10 +329,10 @@ export default class earth {
         const p = lon2xyz(this.options.earth.radius * 1.001, e.E, e.N);
         
         // Load the location image
-        const imageUrl = `/locations/${e.name.toLowerCase()}.jpg`;
+        // const imageUrl = e.url;
         const texture = await new Promise<THREE.Texture>((resolve, reject) => {
           new TextureLoader().load(
-            imageUrl,
+            e.url,
             (texture) => {
               // Create a canvas to modify the image
               const canvas = document.createElement('canvas');
